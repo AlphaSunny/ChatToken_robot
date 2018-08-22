@@ -51,3 +51,12 @@ set_broadcast_bot(speak_sched[0])
 #print(time.time().tm_year)
 '''
 
+timeStamp = 1534935544
+dateArray = datetime.datetime.utcfromtimestamp(timeStamp)
+otherStyleTime = dateArray.strftime("%Y-%m-%d %H:%M:%S")
+print(otherStyleTime)   # 2013--10--10 15:40:00
+# time获取当前时间戳
+now = int(time.time())     # 1533952277
+timeArray = time.localtime(1534935544)
+otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+print(otherStyleTime)  

@@ -8,8 +8,10 @@ if __name__ == "__main__":
     bot = Bot()
     robot = robot.Robot(bot)
     robot.start_broadcast_bot()
-    
+    robot.start_record_bot()
     print("hello world")
+
+
 
 
 

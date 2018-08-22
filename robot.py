@@ -4,7 +4,8 @@ import robot
 from wxpy import *
 import sched
 import threading
-
+from urllib import parse
+from urllib import request
 
 class Robot(object):
     def __init__(self, bot):
@@ -50,6 +51,16 @@ class Robot(object):
 
         #print(timer_start_time)
 
+    def start_record_bot(self):
+        record_group = ensure_one(self.bot.groups().search('聊天机器人测试群'))
+        @self.bot.register(record_group)
+        def forward_boss_message(msg):
+            timeArray = time.localtime(msg.raw['CreateTime'])
+            sendTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+            params = parse.urlencode({'nickname': msg.raw['ActualNickName'], 'content': msg.text, 'send_time': sendTime})
+            f = request.urlopen("http://testapi.fnying.com/bot/collect_message.php?%s" % params)
+            print(f.read())
+        embed()
 
 
 
