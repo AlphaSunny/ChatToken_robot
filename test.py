@@ -5,6 +5,7 @@ from wxpy import *
 import sched
 import threading
 
+'''
 
 speak_sched = speaker.read_speaker_file('./speak/speak.txt')
 
@@ -35,15 +36,10 @@ def set_broadcast_bot(sche):
 
     # 获取距离明天3点时间，单位为秒
     timer_start_time = (next_time - now_time).total_seconds()
-    
+    timer = threading.Timer(timer_start_time, chat_robot.send_message, (name, msg))
+    timer.start()
 
-    s = sched.scheduler(time.time, time.sleep)
-    s.enter(timer_start_time, 1, chat_robot.send_message, (name, msg) )
     print(timer_start_time)
-    s.run()
-    #定时器,参数为(多少时间后执行，单位为秒，执行的方法)
-timer = threading.Timer(timer_start_time, func)
-timer.start()
     
 
     
@@ -53,3 +49,5 @@ set_broadcast_bot(speak_sched[0])
 
 
 #print(time.time().tm_year)
+'''
+

@@ -7,7 +7,9 @@ if __name__ == "__main__":
 
     bot = Bot()
     robot = robot.Robot(bot)
-    robot.send_message_to_group()
+    robot.start_broadcast_bot()
+    
+    print("hello world")
 
 
 
