@@ -1,9 +1,12 @@
 from speak import speaker
 import time,datetime
-import robot
 from wxpy import *
 import sched
 import threading
+import json
+
+from urllib import parse
+from urllib import request
 
 '''
 
@@ -50,6 +53,7 @@ set_broadcast_bot(speak_sched[0])
 
 #print(time.time().tm_year)
 '''
+'''
 
 timeStamp = 1534935544
 dateArray = datetime.datetime.utcfromtimestamp(timeStamp)
@@ -60,3 +64,23 @@ now = int(time.time())     # 1533952277
 timeArray = time.localtime(1534935544)
 otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
 print(otherStyleTime)  
+'''
+
+
+'''
+bot = Bot()
+@bot.register()
+def accept_msg(msg):
+    print(msg.card)
+
+embed()
+'''
+
+params = parse.urlencode({'bot_nickname':'aaa'})
+f = request.urlopen("http://bot.fnying.com/bot/reg.php?%s" % params)
+data = f.read()
+print ('Retrieved',len(data),'characters')
+
+js = json.loads(data.decode("utf-8"))
+
+print(js['bot_mark'])
